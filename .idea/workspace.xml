@@ -7,9 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c061f399-d381-45df-b624-be3b5d2138e7" name="Changes" comment="Config">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/maven.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/maven.yml" afterDir="false" />
-    </list>
+    <list default="true" id="c061f399-d381-45df-b624-be3b5d2138e7" name="Changes" comment="Config" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,7 +50,7 @@
       <option name="presentableId" value="Default" />
       <updated>1667054702920</updated>
       <workItem from="1667054714291" duration="120000" />
-      <workItem from="1667054863293" duration="8385000" />
+      <workItem from="1667054863293" duration="8700000" />
     </task>
     <task id="LOCAL-00001" summary="Config">
       <created>1667062574728</created>
