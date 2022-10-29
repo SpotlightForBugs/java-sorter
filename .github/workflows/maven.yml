@@ -29,7 +29,12 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-
+#the file will be created in the target folder
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: artifact
+        path: target/*.jar
 
     - name: create release
       uses: softprops/action-gh-release@v1
@@ -37,7 +42,7 @@ jobs:
         draft: true
         prerelease: true
         files: |
-          *.jar
+          target/*.jar
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
