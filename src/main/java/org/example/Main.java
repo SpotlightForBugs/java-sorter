@@ -5,15 +5,14 @@ package org.example;
 //This repository is only made to showcase the different sorting algorithms.
 
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Arrays;
 
 public class Main {
+
+    public String[][] speed = new String[5][2];
+
+
 
     private String[] array;
 
@@ -40,18 +39,6 @@ public class Main {
         return array;
     }
 
-    private void printArray(String[] array) {
-        //print array as table
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-            if (i % 10 == 0 && i != 0) {
-                System.out.println();
-            }
-        }
-    }
-
-
-
 
     public String[] bubbleSort() {
         long startTime = System.nanoTime();
@@ -68,6 +55,10 @@ public class Main {
         long duration = (endTime - startTime);
 
         System.out.println("Bubble sort took " + duration + " nanoseconds");
+        speed[0][0] = "Bubble sort";
+        speed[0][1] = String.valueOf(duration) + "ns";
+
+
         return array;
 
     }
@@ -88,6 +79,8 @@ public class Main {
         long endTime = System.nanoTime();
         long duration = (endTime - startTime);
         System.out.println("Selection sort took " + duration + " nanoseconds");
+        speed[1][0] = "Selection sort";
+        speed[1][1] = String.valueOf(duration) + "ns";
         return array;
     }
 
@@ -105,6 +98,8 @@ public class Main {
         long endTime = System.nanoTime();
         long duration = (endTime - startTime);
         System.out.println("Insertion sort took " + duration + " nanoseconds");
+        speed[2][0] = "Insertion sort";
+        speed[2][1] = String.valueOf(duration) + "ns";
         return array;
     }
 
@@ -115,9 +110,7 @@ public class Main {
         String[] leftArray = new String[leftSize];
         String[] rightArray = new String[rightSize];
 
-        for (int i = 0; i < leftSize; i++) {
-            leftArray[i] = array[left + i];
-        }
+        System.arraycopy(array, left + 0, leftArray, 0, leftSize);
         for (int i = 0; i < rightSize; i++) {
             rightArray[i] = array[middle + 1 + i];
         }
@@ -202,10 +195,53 @@ public class Main {
         main.compareArrays(result,   main.array);
         main.printArrayAsTable(result,"Insertion sort");
         result =  main.mergeSort(main.array, 0, main.array.length - 1);
+        //start time
+        long startTime = System.nanoTime();
         main.compareArrays(result, main.array);
+        //end time
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime);
+        System.out.println("Merge sort took " + duration + " nanoseconds");
+        main.speed[3][0] = "Merge sort";
+        main.speed[3][1] = String.valueOf(duration) + "ns";
         main.printArrayAsTable(result,"Merge sort");
 
-        
+
+        main.printOverviewTable(main.speed);
+
+
+
+
+    }
+
+    private void printOverviewTable(String[][] speed) {
+
+        //print the array called speed as a table.
+        System.out.println("Overview of the sorting algorithms");
+        //save the length of the longest string in the array.
+        int longestString = 0;
+        for (int i = 0; i < speed.length; i++) {
+            for (int j = 0; j < speed[i].length; j++) {
+                if (speed[i][j] !=  null) {
+                    if (speed[i][j].length() > longestString) {
+                        longestString = speed[i][j].length();
+                    }
+                }
+            }
+        }
+        //print the table
+        for (int i = 0; i < speed.length; i++) {
+            for (int j = 0; j < speed[i].length; j++) {
+                if (speed[i][j] != null) {
+                    System.out.print(speed[i][j]);
+                    for (int k = 0; k < longestString - speed[i][j].length(); k++) {
+                        System.out.print(" ");
+                    }
+                    System.out.print(" | ");
+                }
+            }
+            System.out.println();
+        }
 
 
     }
