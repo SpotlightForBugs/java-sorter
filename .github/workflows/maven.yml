@@ -39,10 +39,12 @@ jobs:
     - name: create release
       uses: softprops/action-gh-release@v1
       with:
-        draft: true
-        prerelease: true
+        draft: false
+        prerelease: false
+
         files: |
-          target/*.jar
+          target/artifact.jar
+
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
