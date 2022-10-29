@@ -39,14 +39,14 @@ jobs:
     - name: create release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ github.ref }}
-        name: ${{ github.ref }}
+        tag_name: automatic-release
+        name: Commit ${{ github.sha }}
 
         draft: false
         prerelease: true
 
         files: |
-          target/artifact.jar
+          target/*.jar
 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
